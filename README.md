@@ -97,7 +97,7 @@ Once these fields are completely filled out, remove <i>EXAMPLE</i> from the end 
 > pw.envEXAMPLE = pw.env
 _____
 
-## Usage <a name = "env_var"></a>
+## Usage <a name = "usage"></a>
 
 First install the dependencies by double-clicking __install.bat__ or running this command: `npm i`
 
