@@ -37,7 +37,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Prerequisites <a name = "prereq"></a>
 
-This project is built with Node.JS. Download the latest version [here](https://nodejs.org/en/download/). Now download the code from this repo and use `npm i` to install the dependencies required to develop and run your bot.
+This project is built with Node.JS. Download the latest version [here](https://nodejs.org/en/download/). Now download the code from this repo and continue setting up your script app.
 
 
 ## Permissions <a name = "perms"></a>
