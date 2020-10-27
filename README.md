@@ -33,7 +33,7 @@ This bot uses the *___NannyBot___* functionality, which follows you around every
 
 # Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the project up and running on your local machine.
 
 ## Prerequisites <a name = "prereq"></a>
 
