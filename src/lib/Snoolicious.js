@@ -61,7 +61,6 @@ module.exports = class Reddit {
             - If item.body exists, runs handleSubmission instead.
      */
     async queryTasks(handleCommand, handleSubmission) {
-        console.log("Querying new tasks!".green);
         const D = new Date().getTime();
         while (!this.tasks.isEmpty()) {
             const task = this.tasks.dequeue();

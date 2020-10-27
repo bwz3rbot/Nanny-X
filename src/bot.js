@@ -7,36 +7,20 @@ const Snoolicious = require('./lib/Snoolicious');
 const snoolicious = new Snoolicious();
 const SUBS = process.env.SUBREDDITS.split(',').map((sub) => sub.trim());
 
-/*
-    [Handle Submission]
-        - Passed in as the second argument to queryTasks()
-        - Awaited by Snoolicious for each submission dequeued from the task queue
-
-        [Submission Task Object]
-            - The Submission Task object will be passed with these key/value pairs:
-                task: {
-                    item: {
-                        <Reddit Submission Object>
-                    },
-                    priority: <Number you set when calling getCommands or getMentions>,
-                    time: <new Date().getTime()>
-                }
-*/
 let count = 0;
 async function handleSubmission(task) {
-    console.log("RECEIVED TASK!");
+    console.log("new task!".grey);
     console.log(`title:${task.item.title}`.green);
     const saved = await snoolicious.requester.getSubmission(task.item.id).saved;
-    console.log("was already saved: ", saved);
     if (!saved) {
         await xpost(task.item);
         console.log("saving");
         await snoolicious.requester.getSubmission(task.item.id).save();
     } else {
-        console.log("Item was already saved".red);
+        console.log("Item was already saved".magenta);
     }
-    console.log("Size of the queue: ", snoolicious.tasks.size());
-    console.log("TOTAL TASKS COMPLETED: ", ++count);
+    console.log("Size of the queue: ".grey, snoolicious.tasks.size());
+    console.log("Total tasks completed: ".grey, ++count);
 }
 
 async function xpost(post) {
@@ -55,12 +39,12 @@ async function xpost(post) {
 
 /* [Snoolicious Run Cycle] */
 const INTERVAL = (process.env.INTERVAL * 1000 * 60);
+console.log("Welcome to Snoolicious".random);
 async function run() {
-        console.log("Running Test!!!");
         await snoolicious.nannyUser('bwz3r', 1);
-        console.log("APP CHECKING SIZE OF TASKS QUEUE: ".america, snoolicious.tasks.size());
+        console.log("Size of task queue: ".grey, snoolicious.tasks.size());
         await snoolicious.queryTasks(null, handleSubmission);
-        console.log(`Finished Quereying Tasks. Sleeping for ${INTERVAL/1000/60} minutes...`.rainbow);
+        console.log(`Finished Quereying Tasks. Sleeping for ${INTERVAL/1000/60} minutes...`.grey);
         setTimeout(async () => {
             await run()
         }, (INTERVAL));
